@@ -9,13 +9,6 @@ const client = new tmi.Client({
 
 client.connect().catch(console.error);
 
-/**
- * @typedef {Object} TwitchResponseObj
- * @property {boolean} firstMessage
- * @property {string} username
- * @property {string} message
-*/
-
 client.on('message', (_, twitchResponseObj, message, self) => {
 
   /** @type {TwitchResponseObj} */
