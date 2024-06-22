@@ -1,6 +1,6 @@
 import tmi from 'tmi.js';
 import dotenv from 'dotenv'
-import TwitchViewer from './services/TwitchUser.js';
+import TwitchViewer from './services/TwitchViewer.js';
 
 const client = new tmi.Client({
 	channels: [ dotenv.config().parsed.CHANNEL_NAME ],
