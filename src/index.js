@@ -1,13 +1,9 @@
 import tmi from 'tmi.js';
 import chalk from 'chalk';
-import { passwordToken } from './env';
+import dotenv from 'dotenv'
 
 const client = new tmi.Client({
-	identity: {
-		username: 'vittorjavidan',
-		password: passwordToken
-	},
-	channels: [ 'vittorjavidan' ]
+	channels: [ dotenv.config().parsed.CHANNEL_NAME ],
 });
 
 client.connect().catch(console.error);
@@ -17,7 +13,7 @@ client.connect().catch(console.error);
  * @property {boolean} firstMessage
  * @property {string} username
  * @property {string} message
- */
+*/
 
 client.on('message', (_, twitchResponseObj, message, self) => {
 
