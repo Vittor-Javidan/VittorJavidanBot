@@ -1,5 +1,9 @@
 import chalk from "chalk";
 
+/**
+ * @typedef {import('../Types.js').ViewerData} ViewerData
+*/
+
 export default class TwitchViewer {
   
   /** @type {Object<string, string>} */
