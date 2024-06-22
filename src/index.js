@@ -1,7 +1,6 @@
 import tmi from 'tmi.js';
 import dotenv from 'dotenv'
-
-import usernameRandomColor from './usenameRandomColor.js';
+import TwitchViewer from './services/TwitchUser.js';
 
 const client = new tmi.Client({
 	channels: [ dotenv.config().parsed.CHANNEL_NAME ],
@@ -11,8 +10,8 @@ client.connect().catch(console.error);
 
 client.on('message', (_, twitchResponseObj, message, self) => {
 
-  /** @type {TwitchResponseObj} */
-  const userData = {
+  /** @type {ViewerData} */
+  const viewerData = {
     firstMessage: twitchResponseObj['first-msg'],
     username: twitchResponseObj['username'],
     message: message
@@ -22,5 +21,6 @@ client.on('message', (_, twitchResponseObj, message, self) => {
     return;
   }
 
-  console.log(`${usernameRandomColor(userData.username)}: ${message}`);
+  TwitchViewer.registerViewer(viewerData);
+  TwitchViewer.displayMessage(viewerData);
 });
