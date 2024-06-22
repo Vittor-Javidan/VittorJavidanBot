@@ -1,7 +1,8 @@
 import chalk from "chalk";
 
 export default class TwitchViewer {
-
+  
+  /** @type {Object<string, string>} */
   static viewersUsernameColors = {};
 
   /**
