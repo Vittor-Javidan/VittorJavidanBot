@@ -26,12 +26,11 @@ export default class TwitchViewer {
    */
   static displayMessage(viewerData) {
     const { username, message } = viewerData
-    console.log(`${this.viewersUsernameColors[username]}: ${message}`);
+    console.log(`${timeStamp()} ${this.viewersUsernameColors[username]}: ${message}`);
   }
 }
 
 function usernameRandomColor(username) {
-
   const randomNumber1 = Math.random();
   const randomNumber2 = Math.random();
   const randomNumber3 = Math.random();
@@ -39,6 +38,12 @@ function usernameRandomColor(username) {
   const randomGreenValue = Math.floor(randomNumber2 * 256);
   const randomBlueValue = Math.floor(randomNumber3 * 256);
   const colorizedUseName = chalk.rgb(randomRedValue, randomGreenValue, randomBlueValue)(username);
-
   return colorizedUseName
+}
+
+function timeStamp() {
+  const date = new Date();
+  const hours = date.getHours();
+  const minutes = date.getMinutes();
+  return `[${hours}:${minutes}]`;
 }
